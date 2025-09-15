@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Search, Menu, MapPin } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -10,30 +11,30 @@ const Header = () => {
     <header className="sticky top-0 z-50 w-full bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/60 border-b border-card-border">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center space-x-2">
+        <Link to="/" className="flex items-center space-x-2">
           <MapPin className="h-8 w-8 text-primary" />
           <span className="font-heading text-2xl font-bold text-foreground">
             ClearPlot
           </span>
-        </div>
+        </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
-          <a href="#" className="text-muted-foreground hover:text-foreground transition-smooth">
+          <Link to="/listings" className="text-muted-foreground hover:text-foreground transition-smooth">
             Listings
-          </a>
-          <a href="#" className="text-muted-foreground hover:text-foreground transition-smooth">
+          </Link>
+          <Link to="/how-it-works" className="text-muted-foreground hover:text-foreground transition-smooth">
             How It Works
-          </a>
-          <a href="#" className="text-muted-foreground hover:text-foreground transition-smooth">
+          </Link>
+          <Link to="/services" className="text-muted-foreground hover:text-foreground transition-smooth">
             Services
-          </a>
-          <a href="#" className="text-muted-foreground hover:text-foreground transition-smooth">
+          </Link>
+          <Link to="/for-agents" className="text-muted-foreground hover:text-foreground transition-smooth">
             For Agents
-          </a>
-          <a href="#" className="text-muted-foreground hover:text-foreground transition-smooth">
+          </Link>
+          <Link to="/blog" className="text-muted-foreground hover:text-foreground transition-smooth">
             Blog
-          </a>
+          </Link>
         </nav>
 
         {/* Search Bar - Desktop */}
@@ -81,21 +82,21 @@ const Header = () => {
             
             {/* Mobile Navigation */}
             <nav className="flex flex-col space-y-3">
-              <a href="#" className="text-muted-foreground hover:text-foreground transition-smooth">
+              <Link to="/listings" className="text-muted-foreground hover:text-foreground transition-smooth">
                 Listings
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-foreground transition-smooth">
+              </Link>
+              <Link to="/how-it-works" className="text-muted-foreground hover:text-foreground transition-smooth">
                 How It Works
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-foreground transition-smooth">
+              </Link>
+              <Link to="/services" className="text-muted-foreground hover:text-foreground transition-smooth">
                 Services
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-foreground transition-smooth">
+              </Link>
+              <Link to="/for-agents" className="text-muted-foreground hover:text-foreground transition-smooth">
                 For Agents
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-foreground transition-smooth">
+              </Link>
+              <Link to="/blog" className="text-muted-foreground hover:text-foreground transition-smooth">
                 Blog
-              </a>
+              </Link>
             </nav>
             
             {/* Mobile Action Buttons */}
