@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Users, Home, Building2, ArrowRight } from "lucide-react";
+import { Users, Home, Building2, ArrowRight, Scale, Calculator, DollarSign, Clipboard } from "lucide-react";
 
 const ServiceOverview = () => {
   const services = [
@@ -114,19 +114,31 @@ const ServiceOverview = () => {
         {/* Additional Services Bar */}
         <div className="mt-16 bg-muted/50 rounded-xl p-8">
           <div className="grid md:grid-cols-4 gap-6 text-center">
-            <div>
+            <div className="group hover:bg-background/50 rounded-lg p-4 transition-smooth">
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/10 rounded-full mb-4 group-hover:bg-primary/20 transition-smooth">
+                <Scale className="w-6 h-6 text-primary" />
+              </div>
               <h4 className="font-heading font-semibold mb-2">Legal Services</h4>
               <p className="text-sm text-muted-foreground">Title verification, due diligence, documentation</p>
             </div>
-            <div>
+            <div className="group hover:bg-background/50 rounded-lg p-4 transition-smooth">
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/10 rounded-full mb-4 group-hover:bg-primary/20 transition-smooth">
+                <Calculator className="w-6 h-6 text-primary" />
+              </div>
               <h4 className="font-heading font-semibold mb-2">Valuation Tools</h4>
               <p className="text-sm text-muted-foreground">Market analysis, FSI calculations, ROI projections</p>
             </div>
-            <div>
+            <div className="group hover:bg-background/50 rounded-lg p-4 transition-smooth">
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/10 rounded-full mb-4 group-hover:bg-primary/20 transition-smooth">
+                <DollarSign className="w-6 h-6 text-primary" />
+              </div>
               <h4 className="font-heading font-semibold mb-2">Financing Support</h4>
               <p className="text-sm text-muted-foreground">Loan assistance, EMI calculators, bank partnerships</p>
             </div>
-            <div>
+            <div className="group hover:bg-background/50 rounded-lg p-4 transition-smooth">
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/10 rounded-full mb-4 group-hover:bg-primary/20 transition-smooth">
+                <Clipboard className="w-6 h-6 text-primary" />
+              </div>
               <h4 className="font-heading font-semibold mb-2">Project Management</h4>
               <p className="text-sm text-muted-foreground">Construction guidance, approval assistance, compliance</p>
             </div>
