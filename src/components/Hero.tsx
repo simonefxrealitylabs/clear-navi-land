@@ -1,9 +1,33 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Search, MapPin, Shield, Calculator } from "lucide-react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import heroImage from "@/assets/navi-mumbai-hero.jpg";
+import { SearchWithSuggestions } from "@/components/SearchWithSuggestions";
 
 const Hero = () => {
+  const [searchForm, setSearchForm] = useState({
+    location: '',
+    area: '',
+    budget: ''
+  });
+  const navigate = useNavigate();
+
+  const handleSearch = (searchValue?: string) => {
+    const params = new URLSearchParams();
+    const locationToUse = searchValue !== undefined ? searchValue : searchForm.location;
+    if (locationToUse.trim()) params.set('location', locationToUse.trim());
+    if (searchForm.area.trim()) params.set('area', searchForm.area.trim());
+    if (searchForm.budget.trim()) params.set('budget', searchForm.budget.trim());
+
+    navigate(`/listings?${params.toString()}`);
+  };
+
+  const handleInputChange = (field: string, value: string) => {
+    setSearchForm(prev => ({ ...prev, [field]: value }));
+  };
+
   return (
     <section className="relative min-h-[80vh] flex items-center">
       {/* Background Image */}
@@ -36,7 +60,7 @@ const Hero = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="trust-shadow hover:scale-105 transition-bounce">
+              <Button size="lg" className="trust-shadow hover:scale-105 transition-bounce" onClick={handleSearch}>
                 <Search className="w-5 h-5 mr-2" />
                 Search Plots
               </Button>
@@ -54,10 +78,26 @@ const Hero = () => {
             <div className="bg-card/90 backdrop-blur-sm rounded-lg p-6 card-shadow">
               <h3 className="font-heading text-lg font-semibold mb-4">Quick Search</h3>
               <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
-                <Input placeholder="Location" className="bg-background" />
-                <Input placeholder="Area (sq.m)" className="bg-background" />
-                <Input placeholder="Budget" className="bg-background" />
-                <Button className="w-full">
+                <SearchWithSuggestions
+                  value={searchForm.location}
+                  onChange={(value) => handleInputChange('location', value)}
+                  onSearch={handleSearch}
+                  placeholder="Location"
+                  className="bg-background"
+                />
+                <Input 
+                  placeholder="Area (sq.m)" 
+                  className="bg-background" 
+                  value={searchForm.area}
+                  onChange={(e) => handleInputChange('area', e.target.value)}
+                />
+                <Input 
+                  placeholder="Budget" 
+                  className="bg-background" 
+                  value={searchForm.budget}
+                  onChange={(e) => handleInputChange('budget', e.target.value)}
+                />
+                <Button className="w-full" onClick={handleSearch}>
                   <Search className="w-4 h-4 mr-2" />
                   Search
                 </Button>

@@ -7,14 +7,142 @@ export type Json =
   | Json[]
 
 export type Database = {
-  // Allows to automatically instantiate createClient with right options
-  // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
-  __InternalSupabase: {
-    PostgrestVersion: "13.0.5"
-  }
   public: {
     Tables: {
-      [_ in never]: never
+      users: {
+        Row: {
+          id: string
+          first_name: string
+          last_name: string
+          phone: string | null
+          role: 'user' | 'agent' | 'admin'
+          status: 'active' | 'inactive' | 'suspended'
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id: string
+          first_name: string
+          last_name: string
+          phone?: string | null
+          role?: 'user' | 'agent' | 'admin'
+          status?: 'active' | 'inactive' | 'suspended'
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          first_name?: string
+          last_name?: string
+          phone?: string | null
+          role?: 'user' | 'agent' | 'admin'
+          status?: 'active' | 'inactive' | 'suspended'
+          created_at?: string
+          updated_at?: string
+        }
+      }
+      listings: {
+        Row: {
+          id: string
+          user_id: string
+          title: string
+          description: string | null
+          location: string
+          price: number
+          area: number
+          fsi: number
+          zoning: string
+          verified: boolean
+          status: 'pending' | 'active' | 'rejected' | 'sold'
+          images: string[]
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          title: string
+          description?: string | null
+          location: string
+          price: number
+          area: number
+          fsi: number
+          zoning: string
+          verified?: boolean
+          status?: 'pending' | 'active' | 'rejected' | 'sold'
+          images?: string[]
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          title?: string
+          description?: string | null
+          location?: string
+          price?: number
+          area?: number
+          fsi?: number
+          zoning?: string
+          verified?: boolean
+          status?: 'pending' | 'active' | 'rejected' | 'sold'
+          images?: string[]
+          created_at?: string
+          updated_at?: string
+        }
+      }
+      inquiries: {
+        Row: {
+          id: string
+          listing_id: string
+          user_id: string | null
+          message: string
+          contact_email: string
+          contact_phone: string | null
+          status: 'new' | 'contacted' | 'closed'
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          listing_id: string
+          user_id?: string | null
+          message: string
+          contact_email: string
+          contact_phone?: string | null
+          status?: 'new' | 'contacted' | 'closed'
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          listing_id?: string
+          user_id?: string | null
+          message?: string
+          contact_email?: string
+          contact_phone?: string | null
+          status?: 'new' | 'contacted' | 'closed'
+          created_at?: string
+        }
+      }
+      favorites: {
+        Row: {
+          id: string
+          user_id: string
+          listing_id: string
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          listing_id: string
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          listing_id?: string
+          created_at?: string
+        }
+      }
     }
     Views: {
       [_ in never]: never

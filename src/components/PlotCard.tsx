@@ -19,7 +19,7 @@ interface PlotCardProps {
 
 const PlotCard = ({ plot }: PlotCardProps) => {
   return (
-    <Card className="group hover:scale-[1.02] transition-bounce card-shadow hover:shadow-xl overflow-hidden">
+    <Card className="group hover:scale-[1.02] transition-bounce card-shadow hover:shadow-xl overflow-hidden cursor-pointer" onClick={() => window.open(`/listings/${plot.id}`, '_blank')}>
       {/* Image */}
       <div className="relative h-48 bg-muted">
         <img 
@@ -89,7 +89,7 @@ const PlotCard = ({ plot }: PlotCardProps) => {
           
           {/* Action Buttons */}
           <div className="flex space-x-2">
-            <Button size="sm" className="flex-1">
+            <Button size="sm" className="flex-1" onClick={(e) => { e.stopPropagation(); window.open(`/listings/${plot.id}`, '_blank'); }}>
               View Details
             </Button>
             <Button size="sm" variant="outline">
