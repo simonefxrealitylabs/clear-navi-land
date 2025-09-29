@@ -22,13 +22,12 @@ jobs:
     - name: Install dependencies
       run: |
         npm install
-        npm run build
-
+      
     - name: Deploy to Azure Web App
       id: deploy-to-webapp
       uses: azure/webapps-deploy@v2
       with:
-        app-name: ${{ secrets.AZURE_WEBAPP_NAME }}
+        app-name: clearplot
         slot-name: 'production'
         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
         package: .
